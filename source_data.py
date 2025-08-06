@@ -8,25 +8,49 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
+
 # Function for single review
 def analyze_sentiment(text):
+
+    # Define label mapping
+    label_map = {
+        'LABEL_0': 'Negative',
+        'LABEL_1': 'Neutral',
+        'LABEL_2': 'Positive'
+    }
     result = classifier(text)[0]
-    return f"{result['label']} ({result['score']:.2f})"
+    label = label_map.get(result['label'], result['label'])
+    return f"Sentiment: {label}, Confidence: {result['score']:.2f}"
 
 # Function for file upload
 def analyze_file(file):
+
+    # Define label mapping
+    label_map = {
+        'LABEL_0': 'Negative',
+        'LABEL_1': 'Neutral',
+        'LABEL_2': 'Positive'
+    }
     df = pd.read_csv(file.name)  # assuming column "review"
     if 'review' not in df.columns:
         return "CSV must contain a 'review' column.", None
+    
+    #Truncate reviews to 512 characters
+    df['review'] = df['review'].apply(lambda x: x[:512] if isinstance(x, str) else x)
 
-    results = classifier(list(df['review']))
-    df['sentiment'] = [r['label'] for r in results]
+    results = classifier(list(df['review']), truncation=True, max_length=512)
+    
+ # Extract and map labels
+    df['class'] = [r['label'] for r in results]
+    df['sentiment'] = [label_map[r['label']] for r in results]
     df['confidence'] = [r['score'] for r in results]
+
     output_path = "classified_reviews.csv"
     df.to_csv(output_path, index=False)
+
     return "File processed successfully.", output_path
 
-# Build Gradio UI
+# Building Gradio UI
 interface = gr.Interface(
     fn=analyze_sentiment,
     inputs="text",
