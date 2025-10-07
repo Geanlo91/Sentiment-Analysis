@@ -1,0 +1,13 @@
+# Ignore MLflow experiment logs
+mlruns/
+
+# Ignore virtual environments
+.venv/
+
+# Ignore temporary and cache files
+__pycache__/
+*.pyc
+*.pyo
+*.safetensors
+*.pt
+*.DS_Store
