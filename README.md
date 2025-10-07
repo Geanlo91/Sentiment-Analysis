@@ -22,8 +22,7 @@ It consists of two core fine-tuned models (single-label and multi-label) built o
 
 📁 Sentiment-Analysis/ 
 
--  model_tuning.ipynb / model_tuning.py
-          Fine-tunes sentiment classifier 
+-  model_tuning.ipynb / model_tuning.py (Fine-tunes sentiment classifier) 
 - multilabel_tuning.py
           Fine-tunes sarcasm/irony/multipolarity model 
 - gradio_app.py
