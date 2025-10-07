@@ -21,15 +21,15 @@ It consists of two core fine-tuned models (single-label and multi-label) built o
 ## Project Structure 
 
 📁 Sentiment-Analysis/ 
-│ 
-├── model_tuning.ipynb / model_tuning.py # Fine-tunes sentiment classifier 
-├── multilabel_tuning.py                 # Fine-tunes sarcasm/irony/multipolarity model 
-├── gradio_app.py                        # Interactive Gradio interface 
-├── training_data.csv                    # Input dataset for sentiment model 
-├── sarcasm_data.csv                     # Input dataset for multi-label model 
-├── fine_tuned_sentiment_model/          # Saved model & tokenizer (after training) 
-├── fine_tuned_multilabel_model/         # Saved model & tokenizer (after training) 
-└── README.md
+
+-  model_tuning.ipynb / model_tuning.py # Fine-tunes sentiment classifier 
+- multilabel_tuning.py                 # Fine-tunes sarcasm/irony/multipolarity model 
+- gradio_app.py                        # Interactive Gradio interface 
+- training_data.csv                    # Input dataset for sentiment model 
+- sarcasm_data.csv                     # Input dataset for multi-label model 
+- fine_tuned_sentiment_model/          # Saved model & tokenizer (after training) 
+- fine_tuned_multilabel_model/         # Saved model & tokenizer (after training) 
+- README.md
 
 ## Installation 
 
