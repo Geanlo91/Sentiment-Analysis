@@ -43,15 +43,15 @@ It consists of two core fine-tuned models (single-label and multi-label) built o
 
 ## Model Tuning
 1. Sentiment model
-  - Trains a 3-class sentiment classifier on the training_data.csv.
-  - python model_tuning.py
+      - Trains a 3-class sentiment classifier on the training_data.csv.
+      - python model_tuning.py
 
 2. Multi-label model
-  - Trains sarcasm, irony, and multipolarity detectors.
-  - python multilabel_tuning.py
-  - Both models save their weights to:
-  - fine_tuned_sentiment_model/
-  - fine_tuned_multilabel_model/
+      - Trains sarcasm, irony, and multipolarity detectors.
+      - python multilabel_tuning.py
+      - Both models save their weights to:
+      - fine_tuned_sentiment_model/
+      - fine_tuned_multilabel_model/
 
 ## Launch Gradio interface
 After fine-tuning, start the app locally:
